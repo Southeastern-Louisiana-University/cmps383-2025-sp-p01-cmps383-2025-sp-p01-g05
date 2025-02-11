@@ -7,9 +7,9 @@ namespace Selu383.SP25.Api.Dtos
     {
         public int Id { get; set; }
         [Required]
-        public string Name { get; set; }
+        public required string Name { get; set; }
         [Required]
-        public string Address { get; set; }
+        public required string Address { get; set; }
 
         [DefaultValue(1)]
         public int SeatCount { get; set; }
