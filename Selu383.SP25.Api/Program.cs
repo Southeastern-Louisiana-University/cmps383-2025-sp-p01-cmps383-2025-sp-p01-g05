@@ -1,5 +1,6 @@
 
 using Microsoft.EntityFrameworkCore;
+using Selu383.SP25.Api.Models;
 
 namespace Selu383.SP25.Api
 {
@@ -21,6 +22,13 @@ namespace Selu383.SP25.Api
            
 
             var app = builder.Build();
+
+            using (var scope = app.Services.CreateScope())
+            {
+                var services = scope.ServiceProvider;
+
+                SeedData.Initialize(services);
+            }
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
