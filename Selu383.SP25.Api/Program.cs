@@ -25,9 +25,14 @@ namespace Selu383.SP25.Api
 
             using (var scope = app.Services.CreateScope())
             {
-                var services = scope.ServiceProvider;
 
+                var context = scope.ServiceProvider.GetRequiredService<DataContext>();
+                context.Database.Migrate();
+
+                var services = scope.ServiceProvider;
+                
                 SeedData.Initialize(services);
+
             }
 
             // Configure the HTTP request pipeline.
@@ -46,11 +51,6 @@ namespace Selu383.SP25.Api
 
             app.MapControllers();
 
-            using (var scope = app.Services.CreateScope())
-            {
-                var context = scope.ServiceProvider.GetRequiredService<DataContext>();
-                context.Database.Migrate();
-            }
 
             app.Run();
         }

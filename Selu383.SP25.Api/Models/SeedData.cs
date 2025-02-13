@@ -4,7 +4,7 @@ namespace Selu383.SP25.Api.Models
 
 
 {
-    public class SeedData
+    public static class SeedData
     {
         public static void Initialize(IServiceProvider serviceProvider) 
         {
